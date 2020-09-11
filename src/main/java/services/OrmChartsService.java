@@ -1,5 +1,6 @@
 package services;
 
+import enums.SuggestionMode;
 import hibernate.OrmTeams;
 import hibernate.dao.TeamsDao;
 import javafx.scene.chart.BarChart;
@@ -7,6 +8,8 @@ import javafx.scene.chart.XYChart;
 import services.charts.AvgCompChartService;
 import services.charts.PrefPercentageChartService;
 import services.charts.SkillGapChartService;
+import sources.DatafileIOclass;
+import sources.Teams;
 import utils.Colors;
 
 import java.util.ArrayList;
@@ -18,9 +21,9 @@ public class OrmChartsService {
     public OrmChartsService(TeamsDao teamsDao) {
         this.teamsDao = teamsDao;
     }
-    public List<BarChart<String, Number>> drawCharts() {
+    public List<BarChart<String, Number>> drawCharts(SuggestionMode suggestionMode) {
         List<BarChart<String, Number>> charts = new ArrayList<>();
-        List<OrmTeams> ormTeams = teamsDao.getAllTeams().stream().limit(5).collect(Collectors.toList());
+        List<OrmTeams> ormTeams = teamsDao.getAllTeams(suggestionMode).stream().limit(5).collect(Collectors.toList());
         // 1st chart
         PrefPercentageChartService percentageChartService = new PrefPercentageChartService(null, ormTeams);
         charts.add(percentageChartService.createChart(teamsDao));

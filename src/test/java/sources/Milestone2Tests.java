@@ -69,82 +69,82 @@ class Milestone2Tests {
 	}
 
 
-//	@Test
-//	@DisplayName("Should throw error Invalid Member Exception when a student is re-added to some other Team")
-//	void testFormTeams() throws Exception {
-//		fileIO.clearFileData("update_teams.txt");
-//		try {
-//			StudentInfo.addStudentToTeam("S1", new ArrayList<>());
-//		} catch (InvalidMemberException e) {
-//			assertEquals("Cannot add studentId: S1 since it's already added to another team", e.getMessage());
-//		}
-//		// also test if a fresh studentId is added
-//		List<StudentInfo> addedStudents = StudentInfo.addStudentToTeam("S10", new ArrayList<>());
-//		assertEquals(1, addedStudents.size());
-//	}
-//
-//	@Test
-//	@DisplayName("Should throw Student Conflict Exception when a student to be added conflicts with team members")
-//	void testStudentConflicts() throws Exception {
-//		List<StudentInfo> teamMembers = new ArrayList<StudentInfo>();
-//		StudentInfo student1 = new StudentInfo("S1", "A", Arrays.asList("S21", "S22"));
-//		teamMembers.add(student1);
-//		try {
-//			StudentInfo.addStudentToTeam("S21", teamMembers);
-//		} catch (StudentConflictException e) {
-//			assertEquals("Cannot add student: S21 since it conflicts with other team members", e.getMessage());
-//			assertEquals(1, teamMembers.size());
-//		}
-//		// also test if a non-excluded studentId can be added
-//		StudentInfo.addStudentToTeam("S10", teamMembers);
-//		assertEquals(2, teamMembers.size());
-//	}
-//
-//	@Test
-//	@DisplayName("Should throw Personality Imbalance Exception when a team has < 3 different personality types")
-//	void testDifferentPersonalities() throws PersonalityImbalanceException, NoLeaderException {
-//		List<StudentInfo> teamMembers = new ArrayList<>();
-//		String[] invalidPersonalities = {"A", "B", "A", "A"};
-//		for (int i=0; i<4; i++) {
-//			String studentId = "S"+(i+1);
-//			teamMembers.add(new StudentInfo(studentId, invalidPersonalities[i], Arrays.asList("S21", "S22")));
-//		}
-//		Teams team1 = new Teams("PR1", teamMembers);
-//		try {
-//			Teams.hasPersonalityBalance(team1);
-//		} catch (PersonalityImbalanceException e) {
-//			assertEquals("Team has Personality Imbalance, it must have at least 3 different personalities"
-//					, e.getMessage());
-//		}
-//
-//		// also test if 3 different personalities are considered balanced
-//		String[] validPersonalities = {"A", "B", "C", "A"};
-//		teamMembers = new ArrayList<>();
-//		for (int i=0; i<4; i++) {
-//			String studentId = "S"+(i+1);
-//			teamMembers.add(new StudentInfo(studentId, validPersonalities[i], Arrays.asList("S21", "S22")));
-//		}
-//		Teams team2 = new Teams("PR2", teamMembers);
-//		Teams.hasPersonalityBalance(team2);
-//	}
+	@Test
+	@DisplayName("Should throw error Invalid Member Exception when a student is re-added to some other Team")
+	void testFormTeams() throws Exception {
+		fileIO.clearFileData("update_teams.txt");
+		try {
+			StudentInfo.addStudentToTeam("S1", new ArrayList<>());
+		} catch (InvalidMemberException e) {
+			assertEquals("Cannot add studentId: S1 since it's already added to another team", e.getMessage());
+		}
+		// also test if a fresh studentId is added
+		List<StudentInfo> addedStudents = StudentInfo.addStudentToTeam("S10", new ArrayList<>());
+		assertEquals(1, addedStudents.size());
+	}
 
-//	@Test
-//	@DisplayName("Should throw Repeated Member Exception when a StudentID already exists in the Same Team")
-//	void testRepeatedMembers() throws Exception {
-//		List<StudentInfo> teamMembers = new ArrayList<StudentInfo>();
-//		StudentInfo student1 = new StudentInfo("S1", "A", Arrays.asList("S21", "S22"));
-//		teamMembers.add(student1);
-//		try {
-//			StudentInfo.addStudentToTeam("S1", teamMembers);
-//		} catch (RepeatedMemberException e) {
-//			assertEquals("Student ID: S1 is already present in this Team", e.getMessage());
-//			assertEquals(1, teamMembers.size());
-//		}
-//
-//		// also test if a unique studentId can be added to the Same Team
-//		StudentInfo.addStudentToTeam("S10", teamMembers);
-//		assertEquals(2, teamMembers.size());
-//	}
+	@Test
+	@DisplayName("Should throw Student Conflict Exception when a student to be added conflicts with team members")
+	void testStudentConflicts() throws Exception {
+		List<StudentInfo> teamMembers = new ArrayList<StudentInfo>();
+		StudentInfo student1 = new StudentInfo("S1", "A", Arrays.asList("S21", "S22"));
+		teamMembers.add(student1);
+		try {
+			StudentInfo.addStudentToTeam("S21", teamMembers);
+		} catch (StudentConflictException e) {
+			assertEquals("Cannot add student: S21 since it conflicts with other team members", e.getMessage());
+			assertEquals(1, teamMembers.size());
+		}
+		// also test if a non-excluded studentId can be added
+		StudentInfo.addStudentToTeam("S10", teamMembers);
+		assertEquals(2, teamMembers.size());
+	}
+
+	@Test
+	@DisplayName("Should throw Personality Imbalance Exception when a team has < 3 different personality types")
+	void testDifferentPersonalities() throws PersonalityImbalanceException, NoLeaderException {
+		List<StudentInfo> teamMembers = new ArrayList<>();
+		String[] invalidPersonalities = {"A", "B", "A", "A"};
+		for (int i=0; i<4; i++) {
+			String studentId = "S"+(i+1);
+			teamMembers.add(new StudentInfo(studentId, invalidPersonalities[i], Arrays.asList("S21", "S22")));
+		}
+		Teams team1 = new Teams("PR1", teamMembers);
+		try {
+			Teams.hasPersonalityBalance(team1);
+		} catch (PersonalityImbalanceException e) {
+			assertEquals("Team has Personality Imbalance, it must have at least 3 different personalities"
+					, e.getMessage());
+		}
+
+		// also test if 3 different personalities are considered balanced
+		String[] validPersonalities = {"A", "B", "C", "A"};
+		teamMembers = new ArrayList<>();
+		for (int i=0; i<4; i++) {
+			String studentId = "S"+(i+1);
+			teamMembers.add(new StudentInfo(studentId, validPersonalities[i], Arrays.asList("S21", "S22")));
+		}
+		Teams team2 = new Teams("PR2", teamMembers);
+		Teams.hasPersonalityBalance(team2);
+	}
+
+	@Test
+	@DisplayName("Should throw Repeated Member Exception when a StudentID already exists in the Same Team")
+	void testRepeatedMembers() throws Exception {
+		List<StudentInfo> teamMembers = new ArrayList<StudentInfo>();
+		StudentInfo student1 = new StudentInfo("S1", "A", Arrays.asList("S21", "S22"));
+		teamMembers.add(student1);
+		try {
+			StudentInfo.addStudentToTeam("S1", teamMembers);
+		} catch (RepeatedMemberException e) {
+			assertEquals("Student ID: S1 is already present in this Team", e.getMessage());
+			assertEquals(1, teamMembers.size());
+		}
+
+		// also test if a unique studentId can be added to the Same Team
+		StudentInfo.addStudentToTeam("S10", teamMembers);
+		assertEquals(2, teamMembers.size());
+	}
 
 	@Test
 	@DisplayName("Should throw No Leader Exception when a team has no Leader Personality Type")
