@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="university" uuid="0fdbeb6c-c5f6-40ef-9144-8bc5c67b50ef">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/university.sqlite</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="milestone-orm" uuid="538b608b-3a96-48bd-a91b-c73905d29b5b">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/milestone-orm.sqlite</jdbc-url>
+    </data-source>
+  </component>
+</project>

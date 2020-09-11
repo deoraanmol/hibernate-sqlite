@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="hibernate.connection.driver_class">
+			org.sqlite.JDBC
+		</property>
+		
+		<property name="hibernate.connection.url">
+			jdbc:sqlite:milestone-database.sqlite
+		</property>
+		
+		<!-- SQL dialect -->
+		<property name="dialect">
+			com.enigmabridge.hibernate.dialect.SQLiteDialect
+		</property>
+		
+		<!-- LOG nice SQL on stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		
+		<!-- Create Database -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		
+		<!-- List of XML mapping files -->
+		<!-- mapping resource="Utente.hbm.xml" /-->
+		<mapping class="hibernate.OrmTeams"/>
+		<mapping class="hibernate.OrmCompanies"/>
+		<mapping class="hibernate.OrmProjectSkill"/>
+		<mapping class="hibernate.OrmOwners"/>
+		<mapping class="hibernate.OrmStudents"/>
+		<mapping class="hibernate.OrmStudentInfo"/>
+		<mapping class="hibernate.OrmPreference"/>
+		<mapping class="hibernate.OrmTechnicalSkills"/>
+		<mapping class="hibernate.OrmProjects"/>
+		
+	</session-factory>
+</hibernate-configuration>
